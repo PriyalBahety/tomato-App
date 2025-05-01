@@ -1,7 +1,10 @@
 services:
   - type: web
-    name: tomato-app
-    env: python
+    name: tomatoapp
+    runtime: python
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:app  # or whatever your start command is
-    runtime: python-3.9
+    startCommand: python app.py
+    envVars:
+      - key: PORT
+        value: 10000
+9

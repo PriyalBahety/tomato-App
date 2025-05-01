@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from tensorflow.keras.models import load_model
+from tensorflow.keras.models import load_model  # Use this instead of keras.saving
 from tensorflow.keras.preprocessing import image
 import numpy as np
 import os
@@ -7,7 +7,7 @@ import os
 app = Flask(__name__)
 
 # Load the trained model
-MODEL_PATH = "tomato_disease_model.h5"
+MODEL_PATH = "tomato_disease_model.keras"  # Make sure this filename matches exactly
 model = load_model(MODEL_PATH)
 
 # Home route
@@ -28,7 +28,7 @@ def predict():
     filepath = os.path.join("static", file.filename)
     file.save(filepath)
 
-    img = image.load_img(filepath, target_size=(224, 224))  # adjust size to your model input
+    img = image.load_img(filepath, target_size=(224, 224))  # adjust to your model
     img_array = image.img_to_array(img)
     img_array = np.expand_dims(img_array, axis=0) / 255.0
 

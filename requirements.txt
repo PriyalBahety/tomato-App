@@ -1,2 +1,7 @@
-flask==2.3.2
+flask
+tensorflow==2.13.0
+numpy
+pillow
+gunicorn
+
 
